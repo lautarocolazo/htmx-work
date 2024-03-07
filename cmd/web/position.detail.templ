@@ -1,0 +1,39 @@
+package web
+
+import "htmx-fiber/internal/models"
+import "fmt"
+import "strconv"
+
+templ JobPositionDetail(jobPosition models.JobPosition, reviews []models.Review) {
+	@Base() {
+		<div class="flex flex-col items-center min-h-screen">
+			<h1 class="font-bold text-5xl text-primary mt-8 mb-24">{ jobPosition.Title }</h1>
+			<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg">
+				if len(reviews) != 0 {
+					for _, review := range reviews {
+						<div class="card w-4/5 bg-base-200 text-primary drop-shadow-xl m-auto">
+							<div class="card-body items-center text-center p-4">
+								<h2 class="card-title text-3xl"><a href={ templ.SafeURL(fmt.Sprintf("/position/detail/%d", review.ReviewID)) }>{ fmt.Sprintf("Review number %d", review.ReviewID) }</a></h2>
+								<p class="text-xl">
+									<span class="font-bold">How can you get a raise?: </span> { review.RaiseExplanation }
+								</p>
+								<p class="text-xl">
+									<span class="font-bold">Review: </span> { review.RaiseExplanation }
+								</p>
+								<div class="card-actions justify-end">
+									<div class="badge badge-success text-primary font-bold text-lg badge-lg">Base salary: ${ fmt.Sprintf("%.2f", jobPosition.BaseSalary) }</div>
+								</div>
+								<div class="card-actions justify-end">
+									<div class="badge badge-info text-primary font-bold text-lg badge-lg">Rating: { strconv.Itoa(review.Rating) }</div>
+								</div>
+							</div>
+						</div>
+					}
+				}
+			</div>
+			if len(reviews) == 0 {
+				<h1 class="font-bold text-5xl text-primary mt-8 mb-24">Oops! No reviews posted yet! 😭😭😭 </h1>
+			}
+		</div>
+	}
+}

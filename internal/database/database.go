@@ -12,6 +12,8 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
+var DB *sql.DB
+
 type Service interface {
 	Health() map[string]string
 }
@@ -29,11 +31,19 @@ var (
 )
 
 func New() Service {
-	connStr := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", username, password, host, port, database)
+	connStr := fmt.Sprintf(
+		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
+		username,
+		password,
+		host,
+		port,
+		database,
+	)
 	db, err := sql.Open("pgx", connStr)
 	if err != nil {
 		log.Fatal(err)
 	}
+	DB = db
 	s := &service{db: db}
 	return s
 }

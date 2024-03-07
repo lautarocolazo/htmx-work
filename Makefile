@@ -7,8 +7,11 @@ build:
 	@echo "Building..."
 	@go build -o main cmd/api/main.go
 
+templ:
+	@templ generate -watch -proxy=http://localhost:8080
 # Run the application
 run:
+	@templ generate
 	@go run cmd/api/main.go
 
 # Create DB container
@@ -41,6 +44,7 @@ clean:
 
 # Live Reload
 watch:
+	@templ generate
 	@if command -v air > /dev/null; then \
 	    air; \
 	    echo "Watching...";\

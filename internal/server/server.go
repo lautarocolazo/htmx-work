@@ -2,6 +2,7 @@ package server
 
 import (
 	"github.com/gofiber/fiber/v2"
+
 	"htmx-fiber/internal/database"
 )
 
@@ -15,6 +16,9 @@ func New() *FiberServer {
 		App: fiber.New(),
 		db:  database.New(),
 	}
-
 	return server
+}
+
+func (s *FiberServer) SetupStatic() {
+	s.Static("/assets", "./assets")
 }

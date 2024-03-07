@@ -1,0 +1,27 @@
+package web
+
+templ CreateDepartment() {
+	@Base() {
+		<div class="hero min-h-screen bg-base-200">
+			<div class="hero-content flex-col">
+				<div class="text-center lg:text-left">
+					<h1 class="text-5xl font-bold">Create a new department</h1>
+					<p class="py-6">This department will be now available to have create job positions that belong to it.</p>
+				</div>
+				<div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+					<form class="card-body" action="" method="post" hx-swap="transition:true">
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Name</span>
+							</label>
+							<input type="text" placeholder="department name" class="input input-bordered" name="name" required/>
+						</div>
+						<div class="form-control mt-6">
+							<button class="btn btn-primary">Create</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	}
+}

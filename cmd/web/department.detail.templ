@@ -1,0 +1,36 @@
+package web
+
+import "htmx-fiber/internal/models"
+import "fmt"
+
+templ DepartmentDetail(department models.Department, jobPositions []models.JobPosition) {
+	@Base() {
+		<div class="flex flex-col items-center min-h-screen">
+			<h1 class="font-bold text-5xl text-primary mt-8 mb-12">{ department.Name }</h1>
+			if len(jobPositions) != 0 {
+				<img class="w-96" src="/assets/images/home-office.svg"/>
+			}
+			if len(jobPositions) != 0 {
+				<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg">
+					for _, jobPosition := range jobPositions {
+						<div class="card w-96 bg-base-200 text-primary drop-shadow-xl m-auto">
+							<div class="card-body items-center text-center p-4">
+								<h2 class="card-title"><a href={ templ.SafeURL(fmt.Sprintf("/position/detail/%d", jobPosition.JobID)) }>{ jobPosition.Title }</a></h2>
+								<p>
+									Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+								</p>
+								<div class="card-actions justify-end">
+									<div class="badge badge-success text-primary">Base salary: ${ fmt.Sprintf("%.2f", jobPosition.BaseSalary) }</div>
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			}
+			if len(jobPositions) == 0 {
+				<img class="w-96" src="/assets/images/crashed-error.svg"/>
+				<h1 class="font-bold text-5xl text-primary mt-8 mb-24">Oops! No job positions posted yet! 😭😭😭 </h1>
+			}
+		</div>
+	}
+}

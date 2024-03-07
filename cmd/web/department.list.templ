@@ -1,0 +1,33 @@
+package web
+
+import (
+	"htmx-fiber/internal/models"
+	"strconv"
+	"fmt"
+)
+
+templ DepartmentIndex(departments []models.Department) {
+	@Base() {
+		<div class="flex flex-col items-center min-h-screen">
+			<h1 class="font-bold text-5xl text-primary my-8">School Departments</h1>
+			<img class="w-96" src="/assets/images/keynote-presentation.svg"/>
+			<a href="/department/create" class="btn btn-sm btn-success mb-8">Add Department</a>
+			<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg">
+				if len(departments) != 0 {
+					for _, department := range departments {
+						<div class="card w-96 bg-warning text-primary" id={ fmt.Sprintf("department-%d", department.ID) }>
+							<div class="card-body items-center text-center">
+								<h2 class="card-title"><a href={ templ.SafeURL(fmt.Sprintf("/department/detail/%d", department.ID)) }>{ department.Name }</a></h2>
+								<p>Department ID: { strconv.Itoa(department.ID) }</p>
+								<div class="card-actions justify-end">
+									<button class="btn btn-sm btn-primary">Edit</button>
+									<button class="btn btn-sm btn-error" hx-delete={ fmt.Sprintf("/department/delete/%d", department.ID) } hx-swap="delete transition:true" hx-target={ fmt.Sprintf("#department-%d", department.ID) }>Delete</button>
+								</div>
+							</div>
+						</div>
+					}
+				}
+			</div>
+		</div>
+	}
+}

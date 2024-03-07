@@ -1,17 +1,24 @@
 package web
 
+import "htmx-fiber/cmd/web/partials"
+
 templ Base() {
 	<!DOCTYPE html>
-	<html lang="en">
+	<html lang="en" data-theme="lofi">
 		<head>
 			<meta charset="utf-8"/>
-			<title>Go Blueprint Hello</title>
+			<title>BYU-I Work</title>
 			<script src="/js/htmx.min.js"></script>
+			<link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css"/>
+			<script src="https://cdn.tailwindcss.com"></script>
 		</head>
-		<body>
-			<main>
+		<body class="min-h-screen flex flex-col">
+			<header></header>
+			@partials.Navbar()
+			<main class="flex-grow">
 				{ children... }
 			</main>
+			@partials.Footer()
 		</body>
 	</html>
 }

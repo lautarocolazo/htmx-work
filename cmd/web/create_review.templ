@@ -1,0 +1,100 @@
+package web
+
+import "htmx-fiber/internal/models"
+import "fmt"
+
+templ CreateReviewPage (departments []models.Department) {
+	@Base() {
+		<div class="hero min-h-screen bg-base-200">
+			<div class="hero-content flex-col lg:flex-row-reverse">
+				<div class="text-center lg:text-left">
+					<img class="w-96" src="/assets/images/presentation.svg"/>
+					<h1 class="text-5xl font-bold">Leave a review!</h1>
+					<p class="py-6">Remember to always be respectul and keep it cool while sharing your experience!</p>
+				</div>
+				// <div class="text-center lg:flex lg:items-center lg:justify-center lg:justify-start">
+				// <img class="w-96" src="/assets/images/work-party.svg"/>
+				// <div class="ml-4">
+				// <h1 class="text-5xl font-bold">Leave a review!</h1>
+				// <p class="py-6">Remember to always be respectful and keep it cool while sharing your experience!</p>
+				// </div>
+				// </div>
+				<div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+					<form class="card-body" action="" method="post">
+						<label class="form-control w-full max-w-xs">
+							<div class="label">
+								<span class="label-text">What is this job position's department?</span>
+							</div>
+							<select name="department-id" class="select select-bordered">
+								<option disabled selected>Select department</option>
+								for _, department := range departments {
+									<option value={ fmt.Sprintf("%d", department.ID) }>{ department.Name }</option>
+								}
+							</select>
+						</label>
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Name of the position</span>
+							</label>
+							<input
+								name="position-name"
+								type="text"
+								placeholder="type here the name"
+								class="input input-bordered"
+								required
+							/>
+						</div>
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Overall rating</span>
+							</label>
+							<div class="rating rating-lg mt-4 gap-1">
+								<input type="radio" name="rating" value="1" class="mask mask-star-2 bg-red-400" checked/>
+								<input type="radio" name="rating" value="2" class="mask mask-star-2 bg-orange-400"/>
+								<input type="radio" name="rating" value="3" class="mask mask-star-2 bg-yellow-400"/>
+								<input type="radio" name="rating" value="4" class="mask mask-star-2 bg-lime-400"/>
+								<input type="radio" name="rating" value="5" class="mask mask-star-2 bg-green-400"/>
+							</div>
+						</div>
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">Base salary per hour</span>
+							</label>
+							<input
+								name="base-salary"
+								type="number"
+								placeholder="type the base salary here"
+								class="input input-bordered"
+								min="10"
+								max="15"
+								value="10"
+								required
+							/>
+						</div>
+						<div class="form-control">
+							<label class="label cursor-pointer">
+								<span class="label-text">Are there opportunities to get a raise?</span>
+								<input name="raise-opportunity" type="checkbox" class="checkbox"/>
+							</label>
+						</div>
+						<label class="form-control">
+							<div class="label">
+								<span class="label-text">If so, how can you get a raise in this position?</span>
+							</div>
+							<textarea name="raise-explanation" class="textarea textarea-primary textarea-bordered h-24" placeholder="What are their methodologies to give a raise?"></textarea>
+						</label>
+						<label class="form-control">
+							<div class="label">
+								<span class="label-text">Write a review about the job position!</span>
+							</div>
+							<textarea name="review" class="textarea textarea-primary textarea-bordered h-24" placeholder="What would you like other people to know about this job position?"></textarea>
+						</label>
+						<div class="form-control mt-6">
+							<button class="btn btn-primary">Submit review</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	}
+}
