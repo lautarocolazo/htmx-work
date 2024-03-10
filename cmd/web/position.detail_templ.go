@@ -52,7 +52,7 @@ func JobPositionDetail(jobPosition models.JobPosition, reviews []models.Review) 
 			}
 			if len(reviews) != 0 {
 				for _, review := range reviews {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card w-4/5 bg-base-200 text-primary drop-shadow-xl m-auto\"><div class=\"card-body items-center text-center p-4\"><h2 class=\"card-title text-3xl\"><a href=\"")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card w-96 bg-base-200 text-primary drop-shadow-xl m-auto mb-16\"><div class=\"card-body items-center text-center p-4\"><h2 class=\"card-title text-3xl\"><a href=\"")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}

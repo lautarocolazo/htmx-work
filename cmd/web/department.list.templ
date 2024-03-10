@@ -12,7 +12,7 @@ templ DepartmentIndex(departments []models.Department) {
 			<h1 class="font-bold text-5xl text-primary my-8">School Departments</h1>
 			<img class="w-96" src="/assets/images/keynote-presentation.svg"/>
 			<a href="/department/create" class="btn btn-sm btn-success mb-8">Add Department</a>
-			<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg">
+			<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg mb-16">
 				if len(departments) != 0 {
 					for _, department := range departments {
 						<div class="card w-96 bg-warning text-primary" id={ fmt.Sprintf("department-%d", department.ID) }>

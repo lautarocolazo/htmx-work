@@ -1,49 +1,37 @@
-# Project htmx-fiber
+# Overview
 
-One Paragraph of project description goes here
+With this project I wanted to build a website with HTMX, Go, and Templ.
 
-## Getting Started
+I built a website where you can rate jobs on campus.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+I wanted to learn one of the newest JS lightweight frameworks HTMX.
 
-## MakeFile
+[Software Demo Video](https://www.loom.com/share/3c07a0affff8424cae5248bdcb51abe3?sid=4c45f5f1-54c0-4c5d-a50b-d45b5707386c)
 
-run all make commands with clean tests
-```bash
-make all build
-```
+# Development Environment
 
-build the application
-```bash
-make build
-```
+Dev env
 
-run the application
-```bash
-make run
-```
+- neovim
+- tmux
+- Linux
+- git
 
-Create DB container
-```bash
-make docker-run
-```
+Programming language and libraries
 
-Shutdown DB container
-```bash
-make docker-down
-```
+- Go
+- HTMX
+- Templ
+- Docker & docker compose
+- PostgreSQL
 
-live reload the application
-```bash
-make watch
-```
+# Useful Websites
 
-run the test suite
-```bash
-make test
-```
+- [HTMX's docs](https://htmx.org/docs/)
+- [Templ's docs](https://templ.guide/)
 
-clean up binary from the last build
-```bash
-make clean
-```
+# Future Work
+
+- Add authentication
+- Improve UI
+- Add roles. This way, users will be able to sign up, but some of them like me will have admin roles to edit the website in certain way

@@ -11,7 +11,7 @@ templ DepartmentDetail(department models.Department, jobPositions []models.JobPo
 				<img class="w-96" src="/assets/images/home-office.svg"/>
 			}
 			if len(jobPositions) != 0 {
-				<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg">
+				<div class="grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg mb-16">
 					for _, jobPosition := range jobPositions {
 						<div class="card w-96 bg-base-200 text-primary drop-shadow-xl m-auto">
 							<div class="card-body items-center text-center p-4">

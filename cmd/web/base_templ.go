@@ -34,7 +34,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><script src=\"/js/htmx.min.js\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"icon\" type=\"image/x-icon\" href=\"/assets/images/21.svg\"><script src=\"/js/htmx.min.js\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -53,7 +53,7 @@ func DepartmentIndex(departments []models.Department) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a><div class=\"grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a><div class=\"grid grid-cols-3 gap-4 justify-center bg-base-300 p-8 rounded-lg mb-16\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
